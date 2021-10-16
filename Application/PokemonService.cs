@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using pokedex.Domain.Dtos;
-using pokedex.Proxies;
+using Pokedex.Domain.Dtos;
+using Pokedex.Proxies;
 
-namespace pokedex.Application
+namespace Pokedex.Application
 {
     public interface IPokemonService
     {

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using pokedex.Application;
-using pokedex.Domain.Dtos;
+using Pokedex.Application;
+using Pokedex.Domain.Dtos;
 
-namespace pokedex.Controllers
+namespace Pokedex.Controllers
 {
     [ApiController]
     public class PokemonController : ControllerBase

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace pokedex.Application
+namespace Pokedex.Application
 {
 
     public interface ICacheService

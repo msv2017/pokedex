@@ -1,4 +1,4 @@
-﻿namespace pokedex.Domain.Dtos
+﻿namespace Pokedex.Domain.Dtos
 {
     public class PokemonDto
     {

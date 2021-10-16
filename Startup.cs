@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using pokedex.Application;
-using pokedex.Proxies;
+using Pokedex.Application;
+using Pokedex.Proxies;
 
-namespace pokedex
+namespace Pokedex
 {
     public class Startup
     {

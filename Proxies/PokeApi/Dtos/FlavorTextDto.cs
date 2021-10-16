@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace pokedex.Proxies.Dtos
+namespace Pokedex.Proxies.Dtos
 {
     public class FlavorTextDto
     {

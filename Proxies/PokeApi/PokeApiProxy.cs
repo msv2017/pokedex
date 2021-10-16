@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using Flurl;
 using Flurl.Http;
 using Microsoft.Extensions.Logging;
-using pokedex.Application;
-using pokedex.Domain.Dtos;
-using pokedex.Proxies.Dtos;
+using Pokedex.Application;
+using Pokedex.Domain.Dtos;
+using Pokedex.Proxies.Dtos;
 
-namespace pokedex.Proxies
+namespace Pokedex.Proxies
 {
     public interface IPokeApiProxy
     {
@@ -34,7 +34,7 @@ namespace pokedex.Proxies
         {
             try
             {
-                // caching to respect PokeApi fair usage requirement
+                // caching to respect fair usage requirement
                 var specimen = await _cacheService
                     .GetOrAddAsync($"{route}_{name}", () =>
                         baseUrl
