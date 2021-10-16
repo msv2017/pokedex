@@ -22,8 +22,10 @@ namespace pokedex
             services.AddControllers();
 
             services.AddTransient<IPokeApiProxy, PokeApiProxy>();
+            services.AddTransient<IPokemonService, PokemonService>();
 
             services.AddSingleton<ICacheService, CacheService>();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

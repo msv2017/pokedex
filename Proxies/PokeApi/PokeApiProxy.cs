@@ -6,14 +6,14 @@ using Flurl;
 using Flurl.Http;
 using Microsoft.Extensions.Logging;
 using pokedex.Application;
-using pokedex.Domain.Models;
+using pokedex.Domain.Dtos;
 using pokedex.Proxies.Dtos;
 
 namespace pokedex.Proxies
 {
     public interface IPokeApiProxy
     {
-        Task<Pokemon> GetPokemonByNameAsync(string name);
+        Task<PokemonDto> GetPokemonByNameAsync(string name);
     }
 
     public class PokeApiProxy : IPokeApiProxy
@@ -30,7 +30,7 @@ namespace pokedex.Proxies
             _cacheService = cacheService;
         }
 
-        public async Task<Pokemon> GetPokemonByNameAsync(string name)
+        public async Task<PokemonDto> GetPokemonByNameAsync(string name)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace pokedex.Proxies
                             .AppendPathSegments(route, name)
                             .GetJsonAsync<PokemonSpecimenDto>());
 
-                return new Pokemon
+                return new PokemonDto
                 {
                     Id = specimen.Id,
                     Name = specimen.Name,
