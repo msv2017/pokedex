@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Pokedex.Application;
 using Pokedex.Domain.Dtos;
@@ -25,7 +24,7 @@ namespace Pokedex.Controllers
         [HttpGet("pokemon/translated/{name}")]
         public async Task<PokemonDto> GetTranslatedPokemonByName(string name)
         {
-            throw new NotImplementedException();
+            return await _pokemonService.GetTranslatedPokemonByNameAsync(name);
         }
     }
 }

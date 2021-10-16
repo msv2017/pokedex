@@ -22,10 +22,15 @@ namespace Pokedex
             services.AddControllers();
 
             services.AddTransient<IPokeApiProxy, PokeApiProxy>();
+            services.AddTransient<IFunTranslationsApiProxy, FunTranslationsApiProxy>();
+
             services.AddTransient<IPokemonService, PokemonService>();
 
             services.AddSingleton<ICacheService, CacheService>();
 
+            services.AddSingleton<IPokemonTranslator, DefaultTranslator>();
+            services.AddSingleton<IPokemonTranslator, YodaTranslator>();
+            services.AddSingleton<IPokemonTranslator, ShakespearTranslator>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

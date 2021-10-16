@@ -2,6 +2,7 @@
 {
     public enum Translator
     {
+        Default,
         Shakespeare,
         Yoda
     }

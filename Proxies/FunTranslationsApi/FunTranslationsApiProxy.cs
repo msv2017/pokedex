@@ -19,7 +19,7 @@ namespace Pokedex.Proxies
     public class FunTranslationsApiProxy : IFunTranslationsApiProxy
     {
 
-        private const string baseUrl = "https://funtranslations.com/api";
+        private const string baseUrl = "https://api.funtranslations.com/translate";
 
         private readonly ILogger _logger;
         private readonly ICacheService _cacheService;
@@ -34,16 +34,22 @@ namespace Pokedex.Proxies
         {
             try
             {
+                if (translator == Translator.Default)
+                {
+                    return text;
+                }
+
                 // caching to respect fair usage requirement
-                var translation = await _cacheService
+                var translation =
+                    await _cacheService
                     .GetOrAddAsync($"{translator}_{text}", () =>
                         baseUrl
                             .AppendPathSegments(translator)
-                            .PostAsync()
+                            .PostJsonAsync(new { text })
                             .ReceiveJson<TranslationDto>());
 
                 return translation.Success.Total > 0
-                    ? translation.Contents.Text
+                    ? translation.Contents.Translated
                     : text;
 
             }
