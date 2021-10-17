@@ -26,11 +26,16 @@ namespace Pokedex
 
             services.AddTransient<IPokemonService, PokemonService>();
 
-            services.AddSingleton<ICacheService, CacheService>();
+            services.AddSingleton<ICacheService, RedisCacheService>();
 
             services.AddSingleton<IPokemonTranslator, DefaultTranslator>();
             services.AddSingleton<IPokemonTranslator, YodaTranslator>();
             services.AddSingleton<IPokemonTranslator, ShakespearTranslator>();
+
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = Configuration.GetConnectionString("redis");
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

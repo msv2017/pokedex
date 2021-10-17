@@ -15,6 +15,8 @@
     <None Remove="Proxies\PokeApi\Dtos\" />
     <None Remove="Proxies\FunTranslationsApi\" />
     <None Remove="Proxies\FunTranslationsApi\Dtos\" />
+    <None Remove="StackExchange.Redis" />
+    <None Remove="Microsoft.Extensions.Caching.StackExchangeRedis" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />
@@ -28,5 +30,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Flurl.Http" Version="3.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="3.1.20" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,14 @@
-﻿# Prerequisites
+﻿
+# Content
+#### 1. [Prerequisites](#prerequisites)
+#### 2. [Build](#build)
+#### 3. [Run locally](#run-locally)
+#### 4. [Run as docker container](#run-as-docker-container)
+#### 5. [Run as docker container 2](#run-as-docker-container-2)
+#### 6. [API](#api)
+#### 7. [Try it out](#try-it-out)
+
+# Prerequisites
 - Install [Docker Desktop](https://docs.docker.com/desktop/)
 - Install [Docker Compose](https://docs.docker.com/compose/install/)
 - Install [.NET Core](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/install)
@@ -10,13 +20,24 @@ dotnet build
 ```
 
 # Run locally
-In the solution directory, run in terminal:
-```sh
-dotnet run
-```
+In the solution directory do
+1. Start redis container
+    ```sh
+    docker run -d p 6379:6379 --name redis redis
+    ```
+    The application expects to find redis at http://localhost:6379
+2. In the terminal:
+    ```sh
+    dotnet run
+    ```
 Application will be available at http://localhost:5000
 
 To shut it down press `CTRL + C` on Windows or `Control + C` on Mac.
+Then stop redis container and remove it:
+```sh
+docker stop redis
+docker rm redis
+```
 
 # Run as docker container
 Navigate to the solution directory first, then follow these steps:
@@ -24,7 +45,12 @@ Navigate to the solution directory first, then follow these steps:
     ```sh
     docker build -t pokedex .
     ```
-2. Start the application container:
+2. Start redis container
+    ```sh
+    docker run -d p 6379:6379 --name redis redis
+    ```
+    The application expects to find redis at http://localhost:6379
+3. Start the application container:
     ```sh
     docker run -d -p 5000:80 --name pokedex pokedex
     ```
@@ -32,8 +58,13 @@ Navigate to the solution directory first, then follow these steps:
     ```sh
     docker stop pokedex
     ```
+Then stop redis container and remove it:
+```sh
+docker stop redis
+docker rm redis
+```
     
-# Run as docker container (docker-compose)
+# Run as docker container 2
 Navigate to the solution directory first, then follow these steps:
 1. Build our service(s) and run them using docker-compose:
     ```sh

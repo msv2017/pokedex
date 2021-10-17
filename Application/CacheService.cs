@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Logging;
 
 namespace Pokedex.Application
 {
@@ -11,29 +12,40 @@ namespace Pokedex.Application
         Task<T> GetOrAddAsync<T>(string key, Func<Task<T>> valueFactory);
     }
 
-    /// <summary>
-    /// Simplest possible in-memory caching.
-    /// Should be used to cache static resources only.
-    /// </summary>
-    public class CacheService : ICacheService
+    public class RedisCacheService : ICacheService
     {
-        private readonly Dictionary<string, string> _cache;
+        private readonly ILogger _logger;
+        private readonly IDistributedCache _cache;
 
-        public CacheService()
+        public RedisCacheService(ILogger<RedisCacheService> logger, IDistributedCache cache)
         {
-            _cache = new Dictionary<string, string>();
+            _logger = logger;
+            _cache = cache;
         }
 
         public async Task<T> GetOrAddAsync<T>(string key, Func<Task<T>> valueFactory)
         {
-            if (!_cache.TryGetValue(key, out var value))
+            try
             {
-                var item = await valueFactory();
-                _cache[key] = JsonSerializer.Serialize(item);
-                return item;
-            }
+                var value = await _cache.GetStringAsync(key);
 
-            return JsonSerializer.Deserialize<T>(value);
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    var item = await valueFactory();
+                    value = JsonSerializer.Serialize(item);
+                    await _cache.SetStringAsync(key, value, new DistributedCacheEntryOptions
+                    {
+                        AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1)
+                    });
+                }
+
+                return JsonSerializer.Deserialize<T>(value);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return await valueFactory();
+            }
         }
     }
 }

@@ -3,8 +3,19 @@ version: '3.4'
 services:
   pokedex:
     image: ${DOCKER_REGISTRY-}pokedex
+    depends_on:
+      - "redis"
     build:
       context: .
       dockerfile: ./Dockerfile
+    container_name: pokedex
     ports:
       - "5000:80"
+    links:
+      - "redis"
+
+  redis:
+    image: ${DOCKER_REGISTRY-}redis
+    container_name: redis
+    ports:
+      - "6379:6379"
