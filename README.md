@@ -97,7 +97,7 @@ Navigate to the solution directory first, then follow these steps:
 | `GET /pokemon/translated/{name}` | Returns [PokemonDto](#pokemondto), where `description` is translated using [these rules](#translation-rules) |
 
 #### Try it out
-When the application is up and running at http://localhost:5000, try to hit two endpoints whatever tool available (`curl`, Postman etc.). We'll use `curl`:
+When the application is up and running at http://localhost:5000, try to hit two endpoints using any tool available (`curl`, Postman etc.). We'll use `curl`:
 
 | Command | Response |
 | ------- | -------- |
