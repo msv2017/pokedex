@@ -128,7 +128,7 @@ https://api.funtranslations.com/translate/shakespear
 
 # Troubleshooting
 If for some reason `docker-compose up -d` produces an error, it's probably because container named `pokedex` or `redis` already exist.
-Following commands might help fix it:
+Following commands might fix it:
 ```sh
 docker rm pokedex
 docker rm redis
