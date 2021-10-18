@@ -2,22 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>Pokedex</AssemblyName>
   </PropertyGroup>
 
-
-  <ItemGroup>
-    <None Remove="Domain\" />
-    <None Remove="Domain\Dtos\" />
-    <None Remove="Application\" />
-    <None Remove="Proxies\" />
-    <None Remove="Flurl.Http" />
-    <None Remove="Proxies\PokeApi\" />
-    <None Remove="Proxies\PokeApi\Dtos\" />
-    <None Remove="Proxies\FunTranslationsApi\" />
-    <None Remove="Proxies\FunTranslationsApi\Dtos\" />
-    <None Remove="StackExchange.Redis" />
-    <None Remove="Microsoft.Extensions.Caching.StackExchangeRedis" />
-  </ItemGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'pokedex' " />
   <ItemGroup>
     <Folder Include="Domain\" />
     <Folder Include="Domain\Dtos\" />

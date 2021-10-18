@@ -6,7 +6,7 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /src
-COPY ["Pokedex.csproj", "."]
+COPY ["App/Pokedex.csproj", "."]
 RUN dotnet restore "./Pokedex.csproj"
 COPY . .
 WORKDIR "/src/."

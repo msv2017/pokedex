@@ -16,6 +16,7 @@
 # Build
 In the solution root directory, run in terminal:
 ```sh
+dotnet restore
 dotnet build
 ```
 
@@ -28,7 +29,7 @@ In the solution directory do
     The application expects to find redis at http://localhost:6379
 2. In the terminal:
     ```sh
-    dotnet run
+    dotnet run --project App
     ```
 Application will be available at http://localhost:5000
 
