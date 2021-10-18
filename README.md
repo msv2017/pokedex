@@ -1,12 +1,15 @@
 ﻿
+
 # Content
 #### 1. [Prerequisites](#prerequisites)
 #### 2. [Build](#build)
-#### 3. [Run locally](#run-locally)
-#### 4. [Run as docker container](#run-as-docker-container)
-#### 5. [Run as docker container 2](#run-as-docker-container-2)
-#### 6. [API](#api)
-#### 7. [Try it out](#try-it-out)
+#### 3. [Test](#test)
+#### 4. [Run locally](#run-locally)
+#### 5. [Run as docker container](#run-as-docker-container)
+#### 6. [Run as docker container 2](#run-as-docker-container-2)
+#### 7. [API](#api)
+#### 8. [Try it out](#try-it-out)
+#### 9. [Troubleshooting](#troubleshooting)
 
 # Prerequisites
 - Install [Docker Desktop](https://docs.docker.com/desktop/)
@@ -19,6 +22,17 @@ In the solution root directory, run in terminal:
 dotnet restore
 dotnet build
 ```
+
+# Test
+In the solution root directory run in terminal:
+```sh
+dotnet test
+```
+At the end of this command we'll see this:
+```
+Passed!  - Failed:     0, Passed:     8, Skipped:     0, Total:     8, Duration: 150 ms
+```
+Which means all good and we can continue with the next steps.
 
 # Run locally
 In the solution directory do
@@ -112,3 +126,10 @@ https://api.funtranslations.com/translate/yoda
 #### Shakespear translation
 https://api.funtranslations.com/translate/shakespear
 
+# Troubleshooting
+If for some reason `docker-compose up -d` produces an error, it's probably because container named `pokedex` or `redis` already exist.
+Following commands might help fix it:
+```sh
+docker rm pokedex
+docker rm redis
+```

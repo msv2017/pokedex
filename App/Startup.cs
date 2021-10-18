@@ -28,7 +28,6 @@ namespace Pokedex
 
             services.AddSingleton<ICacheService, RedisCacheService>();
 
-            services.AddSingleton<IPokemonTranslator, DefaultTranslator>();
             services.AddSingleton<IPokemonTranslator, YodaTranslator>();
             services.AddSingleton<IPokemonTranslator, ShakespearTranslator>();
 

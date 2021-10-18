@@ -6,12 +6,6 @@ using Pokedex.Proxies;
 
 namespace Pokedex.Application
 {
-    public interface IPokemonService
-    {
-        Task<PokemonDto> GetPokemonByNameAsync(string name);
-        Task<PokemonDto> GetTranslatedPokemonByNameAsync(string name);
-    }
-
     public class PokemonService: IPokemonService
     {
         private readonly IPokeApiProxy _pokeApiProxy;
