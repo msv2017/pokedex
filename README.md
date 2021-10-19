@@ -6,12 +6,12 @@
 2. [Build](#build)
 3. [Test](#test)
 4. [Run locally](#run-locally)
-5. [Run using docker cli](#run-the-app-using-docker-cli)
-6. [Run using docker-compose](#run-the-app-using-docker-compose)
+5. [Run using docker cli](#run-using-docker-cli)
+6. [Run using docker-compose](#run-using-docker-compose)
 7. [API](#api)
 8. [Try it out](#try-it-out)
 9. [Troubleshooting](#troubleshooting)
-10. [Make it production ready](#production-ready)
+10. [Make it production ready](#make-it-production-ready)
 
 # Prerequisites
 - Install [Docker Desktop](https://docs.docker.com/desktop/)
