@@ -1,5 +1,6 @@
 ﻿
 
+
 # Content
 1. [Prerequisites](#prerequisites)
 2. [Build](#build)
@@ -139,9 +140,11 @@ docker rm redis
 Things to improve before going to production:
 1. Add redirect from HTTP to HTTPS (plus signed certificates)
 2. Add authentication and better authorization
-3. Add swagger interface with proper examples
-4. Add integration tests
-5. Add terraform configuration
+3. Add application metrics monitoring
+4. Add swagger interface with proper examples
+5. Add integration tests
+6. Add terraform configuration
+7. Hide the application behind `nginx` and make it scalable
 
 From infrastructure point of view we need to set up:
  1. VCS
