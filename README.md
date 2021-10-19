@@ -138,7 +138,7 @@ docker rm redis
 # Make it production ready
 Things to improve before going to production:
 1. Add redirect from HTTP to HTTPS (plus signed certificates)
-2. Add authentication and better authorisation
+2. Add authentication and better authorization
 3. Add swagger interface with proper examples
 4. Add integration tests
 5. Add terraform configuration
